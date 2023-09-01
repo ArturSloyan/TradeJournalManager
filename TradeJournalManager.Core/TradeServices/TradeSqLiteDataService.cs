@@ -71,7 +71,7 @@ namespace TradeJournalManager.Core.TradeServices
             _connection.Close();
         }
 
-        public override List<Trade> GetAll(Trade item)
+        public override List<Trade> GetAll()
         {
             _connection.Open();
             var trades = _connection.Query<Trade>($"""

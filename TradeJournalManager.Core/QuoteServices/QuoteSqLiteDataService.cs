@@ -4,24 +4,24 @@ using TradeJournalManager.Domain.Models;
 
 namespace TradeJournalManager.Core.QuoteServices
 {
-    public class QuoteSqLiteDataService : TradeDataService<Quote>
+    public class QuoteSqLiteDataService : IDataService<Quote>
     {
-        public override void Add(Quote item)
+        public void Add(Quote item)
         {
             throw new Exception("Adding quote is only possible in database. Contact databaseadmin");
         }
 
-        public override void Edit(Quote item, int id)
+        public void Edit(Quote item, int id)
         {
             throw new Exception("Editing quote is only possible in database. Contact databaseadmin");
         }
 
-        public override void Delete(int id)
+        public void Delete(int id)
         {
             throw new Exception("Deleting quote is only possible in database. Contact databaseadmin");
         }
 
-        public override List<Quote> GetAll(Quote item)
+        public List<Quote> GetAll()
         {
             using var connection = new SqliteConnection("Data Source = TradeJournalDB.db");
 

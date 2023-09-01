@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeJournalManager.Core", "TradeJournalManager\TradeJournalManager.Core.csproj", "{B9A41714-A45C-4165-99E8-B6B415A94A78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeJournalManager.Domain", "TradeJournalManager.Domain\TradeJournalManager.Domain.csproj", "{BD5FC32E-3F06-4561-9249-590C504A3288}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeJournalManager.Domain", "TradeJournalManager.Domain\TradeJournalManager.Domain.csproj", "{BD5FC32E-3F06-4561-9249-590C504A3288}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradeJournalManager.Forms", "TradeJournalManager.Forms\TradeJournalManager.Forms.csproj", "{12AD23E8-F284-4AA3-B1DF-E82034A07DAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeJournalManager.Forms", "TradeJournalManager.Forms\TradeJournalManager.Forms.csproj", "{12AD23E8-F284-4AA3-B1DF-E82034A07DAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeJournalManager.Core", "TradeJournalManager.Core\TradeJournalManager.Core.csproj", "{1CB29792-269E-4A67-B84B-5D5EBE86A9DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B9A41714-A45C-4165-99E8-B6B415A94A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9A41714-A45C-4165-99E8-B6B415A94A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9A41714-A45C-4165-99E8-B6B415A94A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9A41714-A45C-4165-99E8-B6B415A94A78}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BD5FC32E-3F06-4561-9249-590C504A3288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BD5FC32E-3F06-4561-9249-590C504A3288}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD5FC32E-3F06-4561-9249-590C504A3288}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{12AD23E8-F284-4AA3-B1DF-E82034A07DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12AD23E8-F284-4AA3-B1DF-E82034A07DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12AD23E8-F284-4AA3-B1DF-E82034A07DAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CB29792-269E-4A67-B84B-5D5EBE86A9DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB29792-269E-4A67-B84B-5D5EBE86A9DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB29792-269E-4A67-B84B-5D5EBE86A9DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB29792-269E-4A67-B84B-5D5EBE86A9DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
