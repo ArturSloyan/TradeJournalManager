@@ -24,7 +24,6 @@ namespace TradeJournalManager.Core.TradeServices
                 {nameof(Trade.NameOfCertificate)},
                 {nameof(Trade.Buy)},
                 {nameof(Trade.Sell)},
-                {nameof(Trade.Rendite)},
                 {nameof(Trade.ThinkProzess)},
                 {nameof(Trade.DateOfTrade)}) VALUES(
                 @{nameof(Trade.Strategy)},
@@ -32,10 +31,9 @@ namespace TradeJournalManager.Core.TradeServices
                 @{nameof(Trade.NameOfCertificate)},
                 @{nameof(Trade.Buy)},
                 @{nameof(Trade.Sell)},
-                @{nameof(Trade.Rendite)},
                 @{nameof(Trade.ThinkProzess)},
                 @{nameof(Trade.DateOfTrade)})
-                """, (item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, (item.Sell * 100 / item.Buy), item.ThinkProzess, item.DateOfTrade));
+                """, (item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProzess, item.DateOfTrade));
             _connection.Close();
         }
 
@@ -51,11 +49,10 @@ namespace TradeJournalManager.Core.TradeServices
                 {nameof(Trade.NameOfCertificate)} = @{nameof(Trade.NameOfCertificate)},
                 {nameof(Trade.Buy)} = @{nameof(Trade.Buy)},
                 {nameof(Trade.Sell)} = @{nameof(Trade.Sell)},
-                {nameof(Trade.Rendite)} = @{nameof(Trade.Rendite)},
                 {nameof(Trade.ThinkProzess)} = @{nameof(Trade.ThinkProzess)},
                 {nameof(Trade.DateOfTrade)} = @{nameof(Trade.DateOfTrade)}
                 WHERE {nameof(Trade.Id)} = @{nameof(Trade.Id)}
-                """, (item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.Rendite = item.Sell * 100 / item.Buy, item.ThinkProzess, item.DateOfTrade, item.Id));
+                """, (item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProzess, item.DateOfTrade, item.Id));
             _connection.Close();
         }
 
