@@ -20,7 +20,7 @@ namespace TradeJournalManager.Forms.Forms
             textBoxCertificate.Text = _trade.NameOfCertificate;
             textBoxBuy.Text = _trade.Buy.ToString();
             textBoxSell.Text = _trade.Sell.ToString();
-            textBoxRendite.Text = _trade.Rendite.ToString();
+            textBoxRendite.Text = _trade.Rendite;
             textBoxReasons.Text = _trade.ThinkProzess;
             textBoxDate.Text = DateTimeOffset.FromUnixTimeSeconds(_trade.DateOfTrade).DateTime.ToString();
         }

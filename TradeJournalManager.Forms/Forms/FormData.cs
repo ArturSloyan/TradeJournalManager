@@ -20,12 +20,12 @@ namespace TradeJournalManager.Forms.Forms
             comboBoxStrategy.DataSource = Enum.GetValues(typeof(StrategyEnum));
             if (_trade.Id == 0)
             {
-                labelHeader.Text = "Add trade:";
+                labelHeader.Text = "Add Trade:";
                 buttonDo.Text = "Add";
             }
             else
             {
-                labelHeader.Text = "Edit trade:";
+                labelHeader.Text = "Edit Trade:";
                 buttonDo.Text = "Edit";
 
                 comboBoxStrategy.Text = _trade.StrategyName;
@@ -49,8 +49,16 @@ namespace TradeJournalManager.Forms.Forms
 
             try
             {
+                if (double.TryParse(textBoxSell.Text, out double sell))
+                {
+                    _trade.Sell = sell;
+                }
+                else
+                {
+                    _trade.Sell = 0;
+                }
+
                 _trade.Buy = double.Parse(textBoxBuy.Text);
-                _trade.Sell = double.Parse(textBoxSell.Text == "" ? textBoxSell.Text = textBoxBuy.Text : textBoxSell.Text);
                 _trade.Strategy = comboBoxStrategy.Text != "SHORT";
                 _trade.NameOfIndicator = textBoxIndicator.Text;
                 _trade.NameOfCertificate = textBoxCertificate.Text;
@@ -67,7 +75,7 @@ namespace TradeJournalManager.Forms.Forms
                 {
                     case nameof(Trade.NameOfIndicator):
                         SetError_Textbox(textBoxIndicator, ex.Message);
-                         break;
+                        break;
                     case nameof(Trade.NameOfCertificate):
                         SetError_Textbox(textBoxCertificate, ex.Message);
                         break;

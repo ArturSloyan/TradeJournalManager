@@ -27,10 +27,7 @@ namespace TradeJournalManager.Domain.Models
         public double Sell { get; set; }
 
         [NotMapped]
-        [Range(-100, double.MaxValue)]
-        public double Rendite { get { return Math.Round(((Sell - Buy) * 100 / Buy), 2); } }
-        [NotMapped]
-        public string RenditeView { get { return $"{Rendite} %"; } }
+        public string Rendite { get { return Sell == 0 ? "- %" : $"{Math.Round(((Sell - Buy) * 100 / Buy), 2)} %"; } }
         [NotMapped]
         public string StrategyName { get { return Strategy == true ? nameof(StrategyEnum.LONG) : nameof(StrategyEnum.SHORT); } }
         [NotMapped]

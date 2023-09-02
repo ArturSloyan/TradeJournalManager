@@ -25,7 +25,6 @@ namespace TradeJournalManager.Forms
 
             dataGridViewTrades.Columns[nameof(Trade.Strategy)].Visible = false;
             dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].Visible = false;
-            dataGridViewTrades.Columns[nameof(Trade.Rendite)].Visible = false;
 
             dataGridViewTrades.Columns[nameof(Trade.Id)].DisplayIndex = 0;
             dataGridViewTrades.Columns[nameof(Trade.StrategyName)].DisplayIndex = 1;
@@ -33,13 +32,12 @@ namespace TradeJournalManager.Forms
             dataGridViewTrades.Columns[nameof(Trade.NameOfCertificate)].DisplayIndex = 3;
             dataGridViewTrades.Columns[nameof(Trade.Buy)].DisplayIndex = 4;
             dataGridViewTrades.Columns[nameof(Trade.Sell)].DisplayIndex = 5;
-            dataGridViewTrades.Columns[nameof(Trade.RenditeView)].DisplayIndex = 6;
-            dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].DisplayIndex = 11;
-            dataGridViewTrades.Columns[nameof(Trade.Date)].DisplayIndex = 11;
+            dataGridViewTrades.Columns[nameof(Trade.Rendite)].DisplayIndex = 6;
+            dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].DisplayIndex = 10;
+            dataGridViewTrades.Columns[nameof(Trade.Date)].DisplayIndex = 10;
 
-            dataGridViewTrades.Columns[nameof(Trade.Strategy)].DisplayIndex = 11;
-            dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].DisplayIndex = 11;
-            dataGridViewTrades.Columns[nameof(Trade.Rendite)].DisplayIndex = 11;
+            dataGridViewTrades.Columns[nameof(Trade.Strategy)].DisplayIndex = 10;
+            dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].DisplayIndex = 10;
 
             dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].Width = 363;
 
@@ -49,7 +47,7 @@ namespace TradeJournalManager.Forms
             dataGridViewTrades.Columns[nameof(Trade.StrategyName)].HeaderText = "Strategy";
             dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].HeaderText = "Date";
             dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].HeaderText = "Reason";
-            dataGridViewTrades.Columns[nameof(Trade.RenditeView)].HeaderText = "Rendite";
+            //dataGridViewTrades.Columns[nameof(Trade.RenditeView)].HeaderText = "Rendite";
 
             buttonEdit.Enabled = dataGridViewTrades.RowCount > 0;
             buttonDelete.Enabled = dataGridViewTrades.RowCount > 0;
