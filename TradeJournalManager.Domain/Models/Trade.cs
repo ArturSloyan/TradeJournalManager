@@ -28,7 +28,7 @@ namespace TradeJournalManager.Domain.Models
         [NotMapped]
         public string RenditeView { get { return $"{Rendite} %"; } }
         [NotMapped]
-        public string StrategyName { get { return Strategy == true ? "LONG" : "SHORT"; } }
+        public string StrategyName { get { return Strategy == true ? nameof(StrategyEnum.LONG) : nameof(StrategyEnum.SHORT); } }
         [NotMapped]
         public DateTime Date { get { return DateTimeOffset.FromUnixTimeSeconds(DateOfTrade).DateTime; } }
     }

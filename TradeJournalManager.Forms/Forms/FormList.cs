@@ -23,6 +23,26 @@ namespace TradeJournalManager.Forms
             dataGridViewTrades.DataSource = null;
             dataGridViewTrades.DataSource = _dataService.GetAll();
 
+            dataGridViewTrades.Columns[nameof(Trade.Strategy)].Visible = false;
+            dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].Visible = false;
+            dataGridViewTrades.Columns[nameof(Trade.Rendite)].Visible = false;
+
+            dataGridViewTrades.Columns[nameof(Trade.Id)].DisplayIndex = 0;
+            dataGridViewTrades.Columns[nameof(Trade.StrategyName)].DisplayIndex = 1;
+            dataGridViewTrades.Columns[nameof(Trade.NameOfIndicator)].DisplayIndex = 2;
+            dataGridViewTrades.Columns[nameof(Trade.NameOfCertificate)].DisplayIndex = 3;
+            dataGridViewTrades.Columns[nameof(Trade.Buy)].DisplayIndex = 4;
+            dataGridViewTrades.Columns[nameof(Trade.Sell)].DisplayIndex = 5;
+            dataGridViewTrades.Columns[nameof(Trade.RenditeView)].DisplayIndex = 6;
+            dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].DisplayIndex = 11;
+            dataGridViewTrades.Columns[nameof(Trade.Date)].DisplayIndex = 11;
+
+            dataGridViewTrades.Columns[nameof(Trade.Strategy)].DisplayIndex = 11;
+            dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].DisplayIndex = 11;
+            dataGridViewTrades.Columns[nameof(Trade.Rendite)].DisplayIndex = 11;
+
+            dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].Width = 363;
+
             dataGridViewTrades.Columns[nameof(Trade.StrategyName)].HeaderText = "Strategy";
             dataGridViewTrades.Columns[nameof(Trade.NameOfIndicator)].HeaderText = "Indicator";
             dataGridViewTrades.Columns[nameof(Trade.NameOfCertificate)].HeaderText = "Certificate";
@@ -31,37 +51,20 @@ namespace TradeJournalManager.Forms
             dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].HeaderText = "Reason";
             dataGridViewTrades.Columns[nameof(Trade.RenditeView)].HeaderText = "Rendite";
 
-            dataGridViewTrades.Columns[nameof(Trade.Strategy)].Visible = false;
-            dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].Visible = false;
-            dataGridViewTrades.Columns[nameof(Trade.Rendite)].Visible = false;
-
-            dataGridViewTrades.Columns[nameof(Trade.Id)].DisplayIndex = 0;
-            dataGridViewTrades.Columns[nameof(Trade.StrategyName)].DisplayIndex = 1;
-            dataGridViewTrades.Columns[nameof(Trade.NameOfIndicator)].DisplayIndex = 2;
-            dataGridViewTrades.Columns[nameof(Trade.NameOfIndicator)].DisplayIndex = 3;
-            dataGridViewTrades.Columns[nameof(Trade.Buy)].DisplayIndex = 4;
-            dataGridViewTrades.Columns[nameof(Trade.Sell)].DisplayIndex = 5;
-            dataGridViewTrades.Columns[nameof(Trade.RenditeView)].DisplayIndex = 6;
-            dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].DisplayIndex = 7;
-            dataGridViewTrades.Columns[nameof(Trade.Date)].DisplayIndex = 11;
-
-            dataGridViewTrades.Columns[nameof(Trade.Strategy)].DisplayIndex = 9;
-            dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].DisplayIndex = 10;
-            dataGridViewTrades.Columns[nameof(Trade.Rendite)].DisplayIndex = 11;
-
-            dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].Width = 363;
-
             buttonEdit.Enabled = dataGridViewTrades.RowCount > 0;
             buttonDelete.Enabled = dataGridViewTrades.RowCount > 0;
         }
 
         private void DataGridViewTrades_SelectionChanged(object sender, EventArgs e)
         {
-            try
+            if (dataGridViewTrades.RowCount > 0)
             {
-                _trade = dataGridViewTrades.CurrentRow.DataBoundItem as Trade ?? throw new NullReferenceException();
+                try
+                {
+                    _trade = dataGridViewTrades.CurrentRow.DataBoundItem as Trade;
+                }
+                catch { }
             }
-            catch { }
         }
 
         private void DataGridViewTrades_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -92,6 +95,8 @@ namespace TradeJournalManager.Forms
                     catch { throw new Exception("Editing trade doesnt work. Contact artur."); }
                 }
             }
+
+            Load_DataGrid();
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e)
@@ -101,6 +106,8 @@ namespace TradeJournalManager.Forms
                 _dataService.Delete(_trade.Id);
             }
             catch { throw new Exception("Deleteing trade doesnt work. Contact artur."); }
+
+            Load_DataGrid();
         }
     }
 }

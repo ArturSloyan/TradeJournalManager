@@ -33,7 +33,7 @@ namespace TradeJournalManager.Core.TradeServices
                 @{nameof(Trade.Sell)},
                 @{nameof(Trade.ThinkProzess)},
                 @{nameof(Trade.DateOfTrade)})
-                """, (item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProzess, item.DateOfTrade));
+                """, new { item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProzess, item.DateOfTrade });
             _connection.Close();
         }
 
@@ -52,7 +52,7 @@ namespace TradeJournalManager.Core.TradeServices
                 {nameof(Trade.ThinkProzess)} = @{nameof(Trade.ThinkProzess)},
                 {nameof(Trade.DateOfTrade)} = @{nameof(Trade.DateOfTrade)}
                 WHERE {nameof(Trade.Id)} = @{nameof(Trade.Id)}
-                """, (item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProzess, item.DateOfTrade, item.Id));
+                """, new { item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProzess, item.DateOfTrade, item.Id });
             _connection.Close();
         }
 
@@ -64,7 +64,7 @@ namespace TradeJournalManager.Core.TradeServices
             _connection.Execute($"""
                 DELETE FROM {nameof(Trade)}
                 WHERE {nameof(Trade.Id)} = @{nameof(Trade.Id)}
-                """, (id));
+                """, new { Id = id });
             _connection.Close();
         }
 

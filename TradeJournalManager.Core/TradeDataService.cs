@@ -5,7 +5,6 @@ namespace TradeJournalManager.Core
 {
     public abstract class TradeDataService : IDataService<Trade>
     {
-        // validation
         public virtual void Add(Trade item)
         {
             item
