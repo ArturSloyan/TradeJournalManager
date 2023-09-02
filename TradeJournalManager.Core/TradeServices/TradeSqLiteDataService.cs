@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.Sqlite;
+using TradeJournalManager.Core.AbstractServices;
 using TradeJournalManager.Domain.Models;
 
 namespace TradeJournalManager.Core.TradeServices

@@ -1,7 +1,7 @@
 ﻿using TradeJournalManager.Domain.Extensions;
 using TradeJournalManager.Domain.Models;
 
-namespace TradeJournalManager.Core
+namespace TradeJournalManager.Core.AbstractServices
 {
     public abstract class TradeDataService : IDataService<Trade>
     {

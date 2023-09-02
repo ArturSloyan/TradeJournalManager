@@ -49,8 +49,8 @@ namespace TradeJournalManager.Forms.Forms
 
             try
             {
-                _trade.Sell = Convert.ToDouble(textBoxSell.Text ?? throw new TradeException(nameof(Trade.Sell), "Cant stay empty!"));
-                _trade.Buy = Convert.ToDouble(textBoxBuy.Text);
+                _trade.Buy = double.Parse(textBoxBuy.Text);
+                _trade.Sell = double.Parse(textBoxSell.Text == "" ? textBoxSell.Text = textBoxBuy.Text : textBoxSell.Text);
                 _trade.Strategy = comboBoxStrategy.Text != "SHORT";
                 _trade.NameOfIndicator = textBoxIndicator.Text;
                 _trade.NameOfCertificate = textBoxCertificate.Text;
@@ -63,30 +63,33 @@ namespace TradeJournalManager.Forms.Forms
             }
             catch (TradeException ex)
             {
-                switch (ex.Message)
+                switch (ex.Accessor)
                 {
-                    case "NameOfIndicator":
+                    case nameof(Trade.NameOfIndicator):
                         SetError_Textbox(textBoxIndicator, ex.Message);
-                        break;
-                    case "NameOfCertificate":
+                         break;
+                    case nameof(Trade.NameOfCertificate):
                         SetError_Textbox(textBoxCertificate, ex.Message);
                         break;
-                    case "Buy":
+                    case nameof(Trade.Buy):
                         SetError_Textbox(textBoxBuy, ex.Message);
                         break;
-                    case "Sell":
+                    case nameof(Trade.Sell):
                         SetError_Textbox(textBoxSell, ex.Message);
                         break;
-                    case "ThinkProzess":
+                    case nameof(Trade.ThinkProzess):
                         SetError_Textbox(textBoxReasons, ex.Message);
                         break;
                     default:
-                        throw new Exception("Programmers fault.");
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
                 }
+                return;
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Unkown.");
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             DialogResult = DialogResult.OK;

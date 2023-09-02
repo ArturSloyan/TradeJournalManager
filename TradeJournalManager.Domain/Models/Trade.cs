@@ -14,16 +14,20 @@ namespace TradeJournalManager.Domain.Models
         [MaxLength(50)]
         public string NameOfCertificate { get; set; } = string.Empty;
         [Required]
+        [Range(0, double.MaxValue)]
         public double Buy { get; set; }
         [Required]
         [MaxLength(400)]
         public string ThinkProzess { get; set; } = string.Empty;
         [Required]
+        [Range(0, long.MaxValue)]
         public long DateOfTrade { get; set; }
 
+        [Range(0, double.MaxValue)]
         public double Sell { get; set; }
 
         [NotMapped]
+        [Range(-100, double.MaxValue)]
         public double Rendite { get { return Math.Round(((Sell - Buy) * 100 / Buy), 2); } }
         [NotMapped]
         public string RenditeView { get { return $"{Rendite} %"; } }
