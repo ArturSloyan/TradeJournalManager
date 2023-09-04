@@ -2,6 +2,7 @@
 using TradeJournalManager.Core;
 using TradeJournalManager.Core.QuoteServices;
 using TradeJournalManager.Core.TradeServices;
+using TradeJournalManager.Domain.Extensions;
 using TradeJournalManager.Domain.Models;
 
 namespace TradeJournalManager.Forms
@@ -29,7 +30,7 @@ namespace TradeJournalManager.Forms
             {
                 buttonWinLegende.BackColor = Color.ForestGreen;
                 buttonLossLegende.BackColor = Color.LightGray;
-                progressBarWinLoss.Value = 100 / tradeList.Count * tradeList.Where((trade => trade.Buy < trade.Sell && trade.Sell != 0)).ToList().Count;
+                progressBarWinLoss.Value = 100 / tradeList.Count * tradeList.Where((trade => trade.IsWinningTrade())).ToList().Count;
                 textBoxFirstTrade.Text = DateTimeOffset.FromUnixTimeSeconds((tradeList.Min(trade => trade.DateOfTrade))).DateTime.ToString();
             }
 
@@ -39,28 +40,28 @@ namespace TradeJournalManager.Forms
                 textBoxQuote.Text = (quoteList.FirstOrDefault(quote => quote.Id == random)).Text;
             }
 
-            if (tradeList.Any(trade => trade.Sell != 0))
+            if (tradeList.Any(trade => !trade.IsSellTextboxEmpty()))
             {
-                textBoxAverageRendite.Text = $"{Math.Round((tradeList.Where(trade => trade.Sell != 0).Average(trade => double.Parse(MyRegex().Match(trade.Rendite).Value))), 2)} %";
+                textBoxAverageRendite.Text = $"{Math.Round((tradeList.Where(trade => !trade.IsSellTextboxEmpty()).Average(trade => double.Parse(MyRegex().Match(trade.Rendite).Value))), 2)} %";
             }
 
-            if (tradeList.Any(trade => trade.Sell == 0))
+            if (tradeList.Any(trade => trade.IsSellTextboxEmpty()))
             {
-                textBoxInvestedCapital.Text = (tradeList.Where(trade => trade.Sell == 0).Sum(trade => Convert.ToDouble(trade.Buy))).ToString();
+                textBoxInvestedCapital.Text = (tradeList.Where(trade => trade.IsSellTextboxEmpty()).Sum(trade => Convert.ToDouble(trade.Buy))).ToString();
             }
 
-            if (tradeList.Any(trade => trade.Buy < trade.Sell && trade.Sell != 0))
+            if (tradeList.Any(trade => trade.IsWinningTrade()))
             {
-                textBoxTotalWin.Text = (tradeList.Where(trade => trade.Buy < trade.Sell && trade.Sell != 0).Sum(trade => trade.Sell - trade.Buy)).ToString();
-                textBoxAverageWin.Text = (tradeList.Where(trade => trade.Buy < trade.Sell && trade.Sell != 0).Average(trade => trade.Sell - trade.Buy)).ToString();
-                textBoxBiggestWin.Text = (tradeList.Where(trade => trade.Buy < trade.Sell && trade.Sell != 0).Max(trade => trade.Sell - trade.Buy)).ToString();
+                textBoxTotalWin.Text = (tradeList.Where(trade => trade.IsWinningTrade()).Sum(trade => trade.LongCalculation())).ToString();
+                textBoxAverageWin.Text = (tradeList.Where(trade => trade.IsWinningTrade()).Average(trade => trade.LongCalculation())).ToString();
+                textBoxBiggestWin.Text = (tradeList.Where(trade => trade.IsWinningTrade()).Max(trade => trade.LongCalculation())).ToString();
             }
 
-            if (tradeList.Any(trade => trade.Buy > trade.Sell && trade.Sell != 0))
+            if (tradeList.Any(trade => trade.IsLosingTrade()))
             {
-                textBoxTotalLoss.Text = (tradeList.Where(trade => trade.Buy > trade.Sell && trade.Sell != 0).Sum(trade => trade.Buy - trade.Sell)).ToString();
-                textBoxAverageLoss.Text = (tradeList.Where(trade => trade.Buy > trade.Sell && trade.Sell != 0).Average(trade => trade.Buy - trade.Sell)).ToString();
-                textBoxBiggestLoss.Text = (tradeList.Where(trade => trade.Buy > trade.Sell && trade.Sell != 0).Max(trade => trade.Buy - trade.Sell)).ToString();
+                textBoxTotalLoss.Text = (tradeList.Where(trade => trade.IsLosingTrade()).Sum(trade => trade.ShortCalculation())).ToString();
+                textBoxAverageLoss.Text = (tradeList.Where(trade => trade.IsLosingTrade()).Average(trade => trade.ShortCalculation())).ToString();
+                textBoxBiggestLoss.Text = (tradeList.Where(trade => trade.IsLosingTrade()).Max(trade => trade.ShortCalculation())).ToString();
             }
 
             textBoxTradeCount.Text = tradeList.Count.ToString();

@@ -33,7 +33,7 @@ namespace TradeJournalManager.Forms.Forms
                 textBoxCertificate.Text = _trade.NameOfCertificate;
                 textBoxBuy.Text = _trade.Buy.ToString();
                 textBoxSell.Text = _trade.Sell.ToString();
-                textBoxReasons.Text = _trade.ThinkProzess;
+                textBoxReasons.Text = _trade.ThinkProcess;
 
                 dateTimePickerDateOfTrade.Value = DateTimeOffset.FromUnixTimeSeconds(_trade.DateOfTrade).DateTime;
             }
@@ -62,7 +62,7 @@ namespace TradeJournalManager.Forms.Forms
                 _trade.Strategy = comboBoxStrategy.Text != "SHORT";
                 _trade.NameOfIndicator = textBoxIndicator.Text;
                 _trade.NameOfCertificate = textBoxCertificate.Text;
-                _trade.ThinkProzess = textBoxReasons.Text;
+                _trade.ThinkProcess = textBoxReasons.Text;
                 _trade.DateOfTrade = new DateTimeOffset(dateTimePickerDateOfTrade.Value).ToUnixTimeSeconds();
 
                 _trade
@@ -85,7 +85,7 @@ namespace TradeJournalManager.Forms.Forms
                     case nameof(Trade.Sell):
                         SetError_Textbox(textBoxSell, ex.Message);
                         break;
-                    case nameof(Trade.ThinkProzess):
+                    case nameof(Trade.ThinkProcess):
                         SetError_Textbox(textBoxReasons, ex.Message);
                         break;
                     default:

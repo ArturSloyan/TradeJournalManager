@@ -16,12 +16,14 @@ namespace TradeJournalManager.Forms
             _dataService = new TradeSqLiteDataService("TradeJournalDB.db");
 
             Load_DataGrid();
+            //TODO: searchbar over listview
         }
 
         private void Load_DataGrid()
         {
             dataGridViewTrades.DataSource = null;
-            dataGridViewTrades.DataSource = _dataService.GetAll();
+            var list = _dataService.GetAll();
+            dataGridViewTrades.DataSource = list;
 
             dataGridViewTrades.Columns[nameof(Trade.Strategy)].Visible = false;
             dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].Visible = false;
@@ -33,21 +35,20 @@ namespace TradeJournalManager.Forms
             dataGridViewTrades.Columns[nameof(Trade.Buy)].DisplayIndex = 4;
             dataGridViewTrades.Columns[nameof(Trade.Sell)].DisplayIndex = 5;
             dataGridViewTrades.Columns[nameof(Trade.Rendite)].DisplayIndex = 6;
-            dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].DisplayIndex = 10;
+            dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].DisplayIndex = 10;
             dataGridViewTrades.Columns[nameof(Trade.Date)].DisplayIndex = 10;
 
             dataGridViewTrades.Columns[nameof(Trade.Strategy)].DisplayIndex = 10;
             dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].DisplayIndex = 10;
 
-            dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].Width = 363;
+            dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].Width = 363;
 
             dataGridViewTrades.Columns[nameof(Trade.StrategyName)].HeaderText = "Strategy";
             dataGridViewTrades.Columns[nameof(Trade.NameOfIndicator)].HeaderText = "Indicator";
             dataGridViewTrades.Columns[nameof(Trade.NameOfCertificate)].HeaderText = "Certificate";
             dataGridViewTrades.Columns[nameof(Trade.StrategyName)].HeaderText = "Strategy";
             dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].HeaderText = "Date";
-            dataGridViewTrades.Columns[nameof(Trade.ThinkProzess)].HeaderText = "Reason";
-            //dataGridViewTrades.Columns[nameof(Trade.RenditeView)].HeaderText = "Rendite";
+            dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].HeaderText = "Reason";
 
             buttonEdit.Enabled = dataGridViewTrades.RowCount > 0;
             buttonDelete.Enabled = dataGridViewTrades.RowCount > 0;

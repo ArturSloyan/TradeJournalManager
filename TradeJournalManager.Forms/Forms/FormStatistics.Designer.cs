@@ -366,7 +366,6 @@
             // 
             // buttonLossLegende
             // 
-            buttonLossLegende.BackColor = Color.White;
             buttonLossLegende.Location = new Point(322, 82);
             buttonLossLegende.Name = "buttonLossLegende";
             buttonLossLegende.Size = new Size(30, 29);
@@ -375,8 +374,7 @@
             // 
             // buttonWinLegende
             // 
-            buttonWinLegende.BackColor = Color.White;
-            buttonWinLegende.ForeColor = Color.White;
+            buttonWinLegende.BackColor = Color.ForestGreen;
             buttonWinLegende.Location = new Point(114, 82);
             buttonWinLegende.Name = "buttonWinLegende";
             buttonWinLegende.Size = new Size(30, 29);

@@ -25,16 +25,16 @@ namespace TradeJournalManager.Core.TradeServices
                 {nameof(Trade.NameOfCertificate)},
                 {nameof(Trade.Buy)},
                 {nameof(Trade.Sell)},
-                {nameof(Trade.ThinkProzess)},
+                {nameof(Trade.ThinkProcess)},
                 {nameof(Trade.DateOfTrade)}) VALUES(
                 @{nameof(Trade.Strategy)},
                 @{nameof(Trade.NameOfIndicator)},
                 @{nameof(Trade.NameOfCertificate)},
                 @{nameof(Trade.Buy)},
                 @{nameof(Trade.Sell)},
-                @{nameof(Trade.ThinkProzess)},
+                @{nameof(Trade.ThinkProcess)},
                 @{nameof(Trade.DateOfTrade)})
-                """, new { item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProzess, item.DateOfTrade });
+                """, new { item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProcess, item.DateOfTrade });
             _connection.Close();
         }
 
@@ -50,10 +50,10 @@ namespace TradeJournalManager.Core.TradeServices
                 {nameof(Trade.NameOfCertificate)} = @{nameof(Trade.NameOfCertificate)},
                 {nameof(Trade.Buy)} = @{nameof(Trade.Buy)},
                 {nameof(Trade.Sell)} = @{nameof(Trade.Sell)},
-                {nameof(Trade.ThinkProzess)} = @{nameof(Trade.ThinkProzess)},
+                {nameof(Trade.ThinkProcess)} = @{nameof(Trade.ThinkProcess)},
                 {nameof(Trade.DateOfTrade)} = @{nameof(Trade.DateOfTrade)}
                 WHERE {nameof(Trade.Id)} = @{nameof(Trade.Id)}
-                """, new { item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProzess, item.DateOfTrade, item.Id });
+                """, new { item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProcess, item.DateOfTrade, item.Id });
             _connection.Close();
         }
 
