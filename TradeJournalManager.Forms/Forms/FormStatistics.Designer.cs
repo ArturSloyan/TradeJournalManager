@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStatistics));
             label1 = new Label();
             textBoxQuote = new TextBox();
             textBoxInvestedCapital = new TextBox();
@@ -416,6 +417,7 @@
             Controls.Add(groupBox1);
             Controls.Add(label6);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(1280, 718);
             MinimumSize = new Size(1280, 718);
             Name = "FormStatistics";

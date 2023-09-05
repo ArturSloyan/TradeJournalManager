@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDetails));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -237,6 +238,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(500, 600);
             MinimumSize = new Size(500, 600);
             Name = "FormDetails";

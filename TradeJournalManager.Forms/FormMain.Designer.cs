@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             buttonList = new Button();
             buttonStatistics = new Button();
             labelspecial = new Label();
@@ -74,6 +75,7 @@
             Controls.Add(buttonStatistics);
             Controls.Add(buttonList);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(360, 360);
             MinimumSize = new Size(360, 360);
             Name = "FormMain";
