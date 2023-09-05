@@ -21,8 +21,10 @@ namespace TradeJournalManager.Domain.Models
         public double Sell { get; set; }
 
         [NotMapped]
-        public string Rendite { get { return Sell == 0 ? "- %" : $"{Math.Round(((Sell - Buy) * 100 / Buy), 2)} %"; } }
+        public string Rendite { get { return Sell == 0 ? "- %" : $"{RenditeDouble} %"; } }
 
+        [NotMapped]
+        public double RenditeDouble => Math.Round(((Sell - Buy) * 100 / Buy), 2);
 
         [Required]
         public bool Strategy { get; set; }

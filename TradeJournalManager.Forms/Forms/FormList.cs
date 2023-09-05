@@ -27,6 +27,7 @@ namespace TradeJournalManager.Forms
 
             dataGridViewTrades.Columns[nameof(Trade.Strategy)].Visible = false;
             dataGridViewTrades.Columns[nameof(Trade.DateOfTrade)].Visible = false;
+            dataGridViewTrades.Columns[nameof(Trade.RenditeDouble)].Visible = false;
 
             dataGridViewTrades.Columns[nameof(Trade.Id)].DisplayIndex = 0;
             dataGridViewTrades.Columns[nameof(Trade.StrategyName)].DisplayIndex = 1;
@@ -36,6 +37,7 @@ namespace TradeJournalManager.Forms
             dataGridViewTrades.Columns[nameof(Trade.Sell)].DisplayIndex = 5;
             dataGridViewTrades.Columns[nameof(Trade.Rendite)].DisplayIndex = 6;
             dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].DisplayIndex = 10;
+            dataGridViewTrades.Columns[nameof(Trade.RenditeDouble)].DisplayIndex = 10;
             dataGridViewTrades.Columns[nameof(Trade.Date)].DisplayIndex = 10;
 
             dataGridViewTrades.Columns[nameof(Trade.Strategy)].DisplayIndex = 10;

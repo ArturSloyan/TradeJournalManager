@@ -1,7 +1,6 @@
 ﻿using TradeJournalManager.Domain.Exceptions;
 using TradeJournalManager.Domain.Extensions;
 using TradeJournalManager.Domain.Models;
-using static TradeJournalManager.Domain.Models.Trade;
 
 namespace TradeJournalManager.Forms.Forms
 {

@@ -20,14 +20,12 @@ namespace TradeJournalManager.Domain.Extensions
             }
             return trade;
         }
-
         public static Trade IsNotNull(this Trade trade)
         {
             _ = trade ?? throw new NullReferenceException(nameof(Trade));
 
             return trade;
         }
-        
         public static int IsNotNull(this int id)
         {
             if (id == 0)
@@ -40,22 +38,19 @@ namespace TradeJournalManager.Domain.Extensions
         {
             return trade.Buy < trade.Sell && trade.Sell != 0;
         }
-
-        public static double LongCalculation(this Trade trade)
-        {
-            return trade.Sell - trade.Buy;
-        }
-
         public static bool IsLosingTrade(this Trade trade)
         {
             return trade.Buy > trade.Sell && trade.Sell != 0;
         }
 
+        public static double LongCalculation(this Trade trade)
+        {
+            return trade.Sell - trade.Buy;
+        }
         public static double ShortCalculation(this Trade trade)
         {
             return trade.Buy - trade.Sell;
         }
-
         public static bool IsSellTextboxEmpty(this Trade trade)
         {
             return trade.Sell == 0;
