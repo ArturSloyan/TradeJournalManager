@@ -16,7 +16,6 @@ namespace TradeJournalManager.Forms
             _dataService = new TradeSqLiteDataService("TradeJournalDB.db");
 
             Load_DataGrid();
-            //TODO: searchbar over listview
         }
 
         private void Load_DataGrid()
