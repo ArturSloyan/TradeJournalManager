@@ -21,6 +21,7 @@ namespace TradeJournalManager.Forms
             //          alltime
             //       blazor
             //       make leaderboard view (makes sense only 2> participants- => inshallah john und ruben
+            //       date entry date close
         }
     }
 }

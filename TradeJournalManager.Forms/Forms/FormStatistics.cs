@@ -1,4 +1,5 @@
-﻿using TradeJournalManager.Core;
+﻿using Humanizer;
+using TradeJournalManager.Core;
 using TradeJournalManager.Core.QuoteServices;
 using TradeJournalManager.Core.TradeServices;
 using TradeJournalManager.Domain.Extensions;
@@ -26,7 +27,7 @@ namespace TradeJournalManager.Forms
             if (tradeList.Count != 0)
             {
                 progressBarWinLoss.Value = (int)Math.Round((float)tradeList.Where((trade => trade.IsWinningTrade())).Count() / (tradeList.Count() - tradeList.Where(trade => trade.IsSellTextboxEmpty()).Count()) * 100);
-                textBoxFirstTrade.Text = DateTimeOffset.FromUnixTimeSeconds((tradeList.Min(trade => trade.DateOfTrade))).DateTime.ToString();
+                textBoxFirstTrade.Text = DateTimeOffset.FromUnixTimeSeconds((tradeList.Min(trade => trade.EntryDate))).DateTime.ToString();
             }
 
             var random = new Random().Next(1, quoteList.Count);
@@ -38,6 +39,9 @@ namespace TradeJournalManager.Forms
             if (tradeList.Any(trade => !trade.IsSellTextboxEmpty()))
             {
                 textBoxAverageRendite.Text = $"{Math.Round(tradeList.Where(trade => !trade.IsSellTextboxEmpty()).Average(trade => trade.RenditeDouble), 2)} %";
+                textBoxLongestHolding.Text = $"{tradeList.Where(trade => !trade.IsSellTextboxEmpty()).Max(trade => TimeSpan.FromSeconds(trade.ExitDate - trade.EntryDate).Humanize(4))}";
+                textBoxShortestHolding.Text = $"{tradeList.Where(trade => !trade.IsSellTextboxEmpty()).Min(trade => TimeSpan.FromSeconds(trade.ExitDate - trade.EntryDate).Humanize(4))}";
+                textBoxAverageHolding.Text = $"{TimeSpan.FromSeconds(tradeList.Where(trade => !trade.IsSellTextboxEmpty()).Average(trade => trade.ExitDate - trade.EntryDate)).Humanize(4)}";
             }
 
             if (tradeList.Any(trade => trade.IsSellTextboxEmpty()))

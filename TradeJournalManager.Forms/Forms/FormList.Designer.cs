@@ -38,9 +38,10 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(955, 633);
+            buttonAdd.Location = new Point(1091, 844);
+            buttonAdd.Margin = new Padding(3, 4, 3, 4);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(84, 36);
+            buttonAdd.Size = new Size(96, 48);
             buttonAdd.TabIndex = 0;
             buttonAdd.Text = "Add";
             buttonAdd.UseVisualStyleBackColor = true;
@@ -49,23 +50,25 @@
             // dataGridViewTrades
             // 
             dataGridViewTrades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTrades.Location = new Point(12, 22);
+            dataGridViewTrades.Location = new Point(14, 29);
+            dataGridViewTrades.Margin = new Padding(3, 4, 3, 4);
             dataGridViewTrades.MultiSelect = false;
             dataGridViewTrades.Name = "dataGridViewTrades";
             dataGridViewTrades.ReadOnly = true;
             dataGridViewTrades.RowHeadersWidth = 51;
             dataGridViewTrades.RowTemplate.Height = 25;
             dataGridViewTrades.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTrades.Size = new Size(1240, 605);
+            dataGridViewTrades.Size = new Size(1417, 807);
             dataGridViewTrades.TabIndex = 3;
             dataGridViewTrades.CellDoubleClick += DataGridViewTrades_CellDoubleClick;
             dataGridViewTrades.SelectionChanged += DataGridViewTrades_SelectionChanged;
             // 
             // buttonEdit
             // 
-            buttonEdit.Location = new Point(1062, 633);
+            buttonEdit.Location = new Point(1214, 844);
+            buttonEdit.Margin = new Padding(3, 4, 3, 4);
             buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(84, 36);
+            buttonEdit.Size = new Size(96, 48);
             buttonEdit.TabIndex = 4;
             buttonEdit.Text = "Edit";
             buttonEdit.UseVisualStyleBackColor = true;
@@ -73,9 +76,10 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(1168, 633);
+            buttonDelete.Location = new Point(1335, 844);
+            buttonDelete.Margin = new Padding(3, 4, 3, 4);
             buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(84, 36);
+            buttonDelete.Size = new Size(96, 48);
             buttonDelete.TabIndex = 5;
             buttonDelete.Text = "Delete";
             buttonDelete.UseVisualStyleBackColor = true;
@@ -83,17 +87,18 @@
             // 
             // FormList
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1264, 679);
+            ClientSize = new Size(1442, 895);
             Controls.Add(buttonDelete);
             Controls.Add(buttonEdit);
             Controls.Add(dataGridViewTrades);
             Controls.Add(buttonAdd);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(1280, 718);
-            MinimumSize = new Size(1280, 718);
+            Margin = new Padding(3, 4, 3, 4);
+            MaximumSize = new Size(1460, 942);
+            MinimumSize = new Size(1460, 942);
             Name = "FormList";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "List";

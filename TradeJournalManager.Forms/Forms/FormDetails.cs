@@ -22,7 +22,7 @@ namespace TradeJournalManager.Forms.Forms
             textBoxSell.Text = _trade.Sell.ToString();
             textBoxRendite.Text = _trade.Rendite;
             textBoxReasons.Text = _trade.ThinkProcess;
-            textBoxDate.Text = DateTimeOffset.FromUnixTimeSeconds(_trade.DateOfTrade).DateTime.ToString();
+            textBoxDate.Text = DateTimeOffset.FromUnixTimeSeconds(_trade.EntryDate).DateTime.ToString();
         }
     }
 }

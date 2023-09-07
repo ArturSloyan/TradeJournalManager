@@ -34,7 +34,7 @@ namespace TradeJournalManager.Forms.Forms
                 textBoxSell.Text = _trade.Sell.ToString();
                 textBoxReasons.Text = _trade.ThinkProcess;
 
-                dateTimePickerDateOfTrade.Value = DateTimeOffset.FromUnixTimeSeconds(_trade.DateOfTrade).DateTime;
+                dateTimePickerEntryDate.Value = DateTimeOffset.FromUnixTimeSeconds(_trade.EntryDate).DateTime;
             }
         }
 
@@ -48,6 +48,7 @@ namespace TradeJournalManager.Forms.Forms
 
             try
             {
+                long entryDate = 0, exitDate = 0;
                 if (double.TryParse(textBoxSell.Text, out double sell))
                 {
                     _trade.Sell = sell;
@@ -62,7 +63,17 @@ namespace TradeJournalManager.Forms.Forms
                 _trade.NameOfIndicator = textBoxIndicator.Text;
                 _trade.NameOfCertificate = textBoxCertificate.Text;
                 _trade.ThinkProcess = textBoxReasons.Text;
-                _trade.DateOfTrade = new DateTimeOffset(dateTimePickerDateOfTrade.Value).ToUnixTimeSeconds();
+                entryDate = new DateTimeOffset(dateTimePickerEntryDate.Value).ToUnixTimeSeconds();
+                exitDate = new DateTimeOffset(dateTimePickerExitDate.Value).ToUnixTimeSeconds();
+
+                if (entryDate > exitDate)
+                {
+                    throw new Exception($"Entry can´t be earlier than entry.");
+                }
+
+
+                _trade.EntryDate = entryDate;
+                _trade.ExitDate = exitDate;
 
                 _trade
                     .IsNotNull()

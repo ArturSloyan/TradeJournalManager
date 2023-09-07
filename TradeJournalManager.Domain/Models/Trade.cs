@@ -22,7 +22,6 @@ namespace TradeJournalManager.Domain.Models
 
         [NotMapped]
         public string Rendite { get { return Sell == 0 ? "- %" : $"{RenditeDouble} %"; } }
-
         [NotMapped]
         public double RenditeDouble => Math.Round(((Sell - Buy) * 100 / Buy), 2);
 
@@ -31,11 +30,15 @@ namespace TradeJournalManager.Domain.Models
         [NotMapped]
         public string StrategyName { get { return Strategy == true ? nameof(StrategyEnum.LONG) : nameof(StrategyEnum.SHORT); } }
 
-
         [Required]
         [Range(1577863276, long.MaxValue)]
-        public long DateOfTrade { get; set; }
+        public long EntryDate { get; set; }
         [NotMapped]
-        public DateTime Date { get { return DateTimeOffset.FromUnixTimeSeconds(DateOfTrade).DateTime; } }
+        public DateTime EntryDatetime { get { return DateTimeOffset.FromUnixTimeSeconds(EntryDate).DateTime; } }
+
+        [Range(1577863276, long.MaxValue)]
+        public long ExitDate { get; set; }
+        [NotMapped]
+        public DateTime ExitDatetime { get { return DateTimeOffset.FromUnixTimeSeconds(ExitDate).DateTime; } }
     }
 }
