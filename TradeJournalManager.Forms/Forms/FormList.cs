@@ -14,7 +14,6 @@ namespace TradeJournalManager.Forms
             InitializeComponent();
 
             _dataService = new TradeSqLiteDataService("TradeJournalDB.db");
-
             Load_DataGrid();
         }
 

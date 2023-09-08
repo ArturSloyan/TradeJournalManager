@@ -24,16 +24,16 @@ namespace TradeJournalManager.Forms
             var tradeList = _tradeDataService.GetAll();
             var quoteList = _quoteDataService.GetAll();
 
-            if (tradeList.Count != 0)
-            {
-                progressBarWinLoss.Value = (int)Math.Round((float)tradeList.Where((trade => trade.IsWinningTrade())).Count() / (tradeList.Count() - tradeList.Where(trade => trade.IsSellTextboxEmpty()).Count()) * 100);
-                textBoxFirstTrade.Text = DateTimeOffset.FromUnixTimeSeconds((tradeList.Min(trade => trade.EntryDate))).DateTime.ToString();
-            }
-
             var random = new Random().Next(1, quoteList.Count);
             if (quoteList.Any(quote => quote.Id == random))
             {
                 textBoxQuote.Text = quoteList.FirstOrDefault(quote => quote.Id == random).Text;
+            }
+
+            if (tradeList.Count != 0)
+            {
+                progressBarWinLoss.Value = (int)Math.Round((float)tradeList.Where((trade => trade.IsWinningTrade())).Count() / (tradeList.Count() - tradeList.Where(trade => trade.IsSellTextboxEmpty()).Count()) * 100);
+                textBoxFirstTrade.Text = DateTimeOffset.FromUnixTimeSeconds((tradeList.Min(trade => trade.EntryDate))).DateTime.ToString();
             }
 
             if (tradeList.Any(trade => !trade.IsSellTextboxEmpty()))
@@ -46,21 +46,25 @@ namespace TradeJournalManager.Forms
 
             if (tradeList.Any(trade => trade.IsSellTextboxEmpty()))
             {
-                textBoxInvestedCapital.Text = tradeList.Where(trade => trade.IsSellTextboxEmpty()).Sum(trade => Convert.ToDouble(trade.Buy)).ToString();
+                textBoxInvestedCapital.Text = tradeList.Where(trade => trade.IsSellTextboxEmpty()).Sum(trade => Convert.ToDouble(trade.Buy)).ToString("C");
+            }
+            else
+            {
+                textBoxInvestedCapital.Text = 0.ToString("C");
             }
 
             if (tradeList.Any(trade => trade.IsWinningTrade()))
             {
-                textBoxTotalWin.Text = tradeList.Where(trade => trade.IsWinningTrade()).Sum(trade => trade.LongCalculation()).ToString();
-                textBoxAverageWin.Text = tradeList.Where(trade => trade.IsWinningTrade()).Average(trade => trade.LongCalculation()).ToString();
-                textBoxBiggestWin.Text = tradeList.Where(trade => trade.IsWinningTrade()).Max(trade => trade.LongCalculation()).ToString();
+                textBoxTotalWin.Text = tradeList.Where(trade => trade.IsWinningTrade()).Sum(trade => trade.LongCalculation()).ToString("C");
+                textBoxAverageWin.Text = tradeList.Where(trade => trade.IsWinningTrade()).Average(trade => trade.LongCalculation()).ToString("C");
+                textBoxBiggestWin.Text = tradeList.Where(trade => trade.IsWinningTrade()).Max(trade => trade.LongCalculation()).ToString("C");
             }
 
             if (tradeList.Any(trade => trade.IsLosingTrade()))
             {
-                textBoxTotalLoss.Text = tradeList.Where(trade => trade.IsLosingTrade()).Sum(trade => trade.ShortCalculation()).ToString();
-                textBoxAverageLoss.Text = tradeList.Where(trade => trade.IsLosingTrade()).Average(trade => trade.ShortCalculation()).ToString();
-                textBoxBiggestLoss.Text = tradeList.Where(trade => trade.IsLosingTrade()).Max(trade => trade.ShortCalculation()).ToString();
+                textBoxTotalLoss.Text = tradeList.Where(trade => trade.IsLosingTrade()).Sum(trade => trade.ShortCalculation()).ToString("C");
+                textBoxAverageLoss.Text = tradeList.Where(trade => trade.IsLosingTrade()).Average(trade => trade.ShortCalculation()).ToString("C");
+                textBoxBiggestLoss.Text = tradeList.Where(trade => trade.IsLosingTrade()).Max(trade => trade.ShortCalculation()).ToString("C");
             }
 
             textBoxTradeCount.Text = tradeList.Count.ToString();

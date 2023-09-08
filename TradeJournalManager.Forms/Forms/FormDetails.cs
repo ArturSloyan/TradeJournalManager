@@ -18,8 +18,8 @@ namespace TradeJournalManager.Forms.Forms
             textBoxStrategy.Text = _trade.Strategy.ToString();
             textBoxIndicator.Text = _trade.NameOfIndicator;
             textBoxCertificate.Text = _trade.NameOfCertificate;
-            textBoxBuy.Text = _trade.Buy.ToString();
-            textBoxSell.Text = _trade.Sell.ToString();
+            textBoxBuy.Text = _trade.Buy.ToString("C");
+            textBoxSell.Text = _trade.Sell.ToString("C");
             textBoxRendite.Text = _trade.Rendite;
             textBoxReasons.Text = _trade.ThinkProcess;
             textBoxDate.Text = DateTimeOffset.FromUnixTimeSeconds(_trade.EntryDate).DateTime.ToString();

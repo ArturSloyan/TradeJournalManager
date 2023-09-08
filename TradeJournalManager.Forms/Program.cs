@@ -1,3 +1,5 @@
+using TradeJournalManager.Core;
+
 namespace TradeJournalManager.Forms
 {
     internal static class Program
@@ -10,8 +12,12 @@ namespace TradeJournalManager.Forms
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            //https://www.youtube.com/watch?v=7TpljNN0IvA&ab_channel=rorymulcahey
+            //DatabaseHelper.InitializeDatabase();
+
             ApplicationConfiguration.Initialize();
             Application.Run(new FormMain());
+
             // TODO: one file programm
             //       find a way to have backup of the trades, like saving in excel with serializer
             //       statistics form
