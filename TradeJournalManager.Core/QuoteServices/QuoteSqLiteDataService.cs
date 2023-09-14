@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.Sqlite;
+using System;
 using TradeJournalManager.Domain.Models;
 
 namespace TradeJournalManager.Core.QuoteServices
@@ -21,11 +22,13 @@ namespace TradeJournalManager.Core.QuoteServices
             throw new Exception("Deleting quote is only possible in database. Contact databaseadmin");
         }
 
-        public List<Quote> GetAll()
+        public async Task<List<Quote>> GetAll()
         {
             using var connection = new SqliteConnection("Data Source = TradeJournalDB.db");
 
-            return connection.Query<Quote>($"SELECT * FROM {nameof(Quote)}").ToList();
+            IEnumerable<Quote> quotes = await connection.QueryAsync<Quote>($"SELECT * FROM {nameof(Quote)}");
+
+            return quotes.ToList();
         }
     }
 }

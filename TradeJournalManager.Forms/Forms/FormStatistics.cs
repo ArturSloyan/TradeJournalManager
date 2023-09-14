@@ -1,4 +1,5 @@
 ﻿using Humanizer;
+using System.Diagnostics;
 using TradeJournalManager.Core;
 using TradeJournalManager.Core.QuoteServices;
 using TradeJournalManager.Core.TradeServices;
@@ -19,10 +20,10 @@ namespace TradeJournalManager.Forms
             _quoteDataService = new QuoteSqLiteDataService();
         }
 
-        private void FormStatistics_Load(object sender, EventArgs e)
+        private async void FormStatistics_Load(object sender, EventArgs e)
         {
-            var tradeList = _tradeDataService.GetAll();
-            var quoteList = _quoteDataService.GetAll();
+            var tradeList = await _tradeDataService.GetAll();
+            var quoteList = await _quoteDataService.GetAll();
 
             var random = new Random().Next(1, quoteList.Count);
             if (quoteList.Any(quote => quote.Id == random))
@@ -32,8 +33,12 @@ namespace TradeJournalManager.Forms
 
             if (tradeList.Count != 0)
             {
-                progressBarWinLoss.Value = (int)Math.Round((float)tradeList.Where((trade => trade.IsWinningTrade())).Count() / (tradeList.Count() - tradeList.Where(trade => trade.IsSellTextboxEmpty()).Count()) * 100);
                 textBoxFirstTrade.Text = DateTimeOffset.FromUnixTimeSeconds((tradeList.Min(trade => trade.EntryDate))).DateTime.ToString();
+            }
+
+            if (tradeList.Any(trade => !trade.IsSellTextboxEmpty()))
+            {
+                progressBarWinLoss.Value = (int)Math.Round((float)tradeList.Where((trade => trade.IsWinningTrade())).Count() / (tradeList.Count() - tradeList.Where(trade => trade.IsSellTextboxEmpty()).Count()) * 100);
             }
 
             if (tradeList.Any(trade => !trade.IsSellTextboxEmpty()))
@@ -68,6 +73,8 @@ namespace TradeJournalManager.Forms
             }
 
             textBoxTradeCount.Text = tradeList.Count.ToString();
+
+            label1.Select();
         }
     }
 }

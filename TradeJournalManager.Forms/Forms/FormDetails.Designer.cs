@@ -36,9 +36,7 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            label8 = new Label();
             labelHeader = new Label();
-            textBoxDate = new TextBox();
             textBoxStrategy = new TextBox();
             textBoxReasons = new TextBox();
             textBoxRendite = new TextBox();
@@ -48,6 +46,10 @@
             textBoxIndicator = new TextBox();
             textBoxId = new TextBox();
             label9 = new Label();
+            label10 = new Label();
+            textBoxExitDate = new TextBox();
+            label11 = new Label();
+            textBoxEntryDate = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -113,15 +115,6 @@
             label7.TabIndex = 6;
             label7.Text = "Reasons:";
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(70, 667);
-            label8.Name = "label8";
-            label8.Size = new Size(44, 20);
-            label8.TabIndex = 7;
-            label8.Text = "Date:";
-            // 
             // labelHeader
             // 
             labelHeader.AutoSize = true;
@@ -130,16 +123,6 @@
             labelHeader.Size = new Size(49, 20);
             labelHeader.TabIndex = 8;
             labelHeader.Text = "Trade:";
-            // 
-            // textBoxDate
-            // 
-            textBoxDate.BackColor = Color.White;
-            textBoxDate.Location = new Point(127, 663);
-            textBoxDate.Margin = new Padding(3, 4, 3, 4);
-            textBoxDate.Name = "textBoxDate";
-            textBoxDate.ReadOnly = true;
-            textBoxDate.Size = new Size(365, 27);
-            textBoxDate.TabIndex = 16;
             // 
             // textBoxStrategy
             // 
@@ -159,7 +142,7 @@
             textBoxReasons.Multiline = true;
             textBoxReasons.Name = "textBoxReasons";
             textBoxReasons.ReadOnly = true;
-            textBoxReasons.Size = new Size(365, 143);
+            textBoxReasons.Size = new Size(365, 110);
             textBoxReasons.TabIndex = 19;
             // 
             // textBoxRendite
@@ -175,7 +158,7 @@
             // textBoxSell
             // 
             textBoxSell.BackColor = Color.White;
-            textBoxSell.ForeColor = Color.Red;
+            textBoxSell.ForeColor = Color.Black;
             textBoxSell.Location = new Point(127, 377);
             textBoxSell.Margin = new Padding(3, 4, 3, 4);
             textBoxSell.Name = "textBoxSell";
@@ -186,7 +169,7 @@
             // textBoxBuy
             // 
             textBoxBuy.BackColor = Color.White;
-            textBoxBuy.ForeColor = Color.Green;
+            textBoxBuy.ForeColor = Color.Black;
             textBoxBuy.Location = new Point(127, 323);
             textBoxBuy.Margin = new Padding(3, 4, 3, 4);
             textBoxBuy.Name = "textBoxBuy";
@@ -227,11 +210,49 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(86, 107);
+            label9.Location = new Point(90, 106);
             label9.Name = "label9";
             label9.Size = new Size(25, 20);
             label9.TabIndex = 25;
             label9.Text = "Id:";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(79, 682);
+            label10.Name = "label10";
+            label10.Size = new Size(36, 20);
+            label10.TabIndex = 7;
+            label10.Text = "Exit:";
+            // 
+            // textBoxExitDate
+            // 
+            textBoxExitDate.BackColor = Color.White;
+            textBoxExitDate.Location = new Point(127, 679);
+            textBoxExitDate.Margin = new Padding(3, 4, 3, 4);
+            textBoxExitDate.Name = "textBoxExitDate";
+            textBoxExitDate.ReadOnly = true;
+            textBoxExitDate.Size = new Size(365, 27);
+            textBoxExitDate.TabIndex = 16;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(70, 628);
+            label11.Name = "label11";
+            label11.Size = new Size(45, 20);
+            label11.TabIndex = 7;
+            label11.Text = "Entry:";
+            // 
+            // textBoxEntryDate
+            // 
+            textBoxEntryDate.BackColor = Color.White;
+            textBoxEntryDate.Location = new Point(127, 628);
+            textBoxEntryDate.Margin = new Padding(3, 4, 3, 4);
+            textBoxEntryDate.Name = "textBoxEntryDate";
+            textBoxEntryDate.ReadOnly = true;
+            textBoxEntryDate.Size = new Size(365, 27);
+            textBoxEntryDate.TabIndex = 16;
             // 
             // FormDetails
             // 
@@ -247,9 +268,11 @@
             Controls.Add(textBoxRendite);
             Controls.Add(textBoxReasons);
             Controls.Add(textBoxStrategy);
-            Controls.Add(textBoxDate);
+            Controls.Add(textBoxExitDate);
+            Controls.Add(textBoxEntryDate);
+            Controls.Add(label10);
+            Controls.Add(label11);
             Controls.Add(labelHeader);
-            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -279,9 +302,7 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private Label label8;
         private Label labelHeader;
-        private TextBox textBoxDate;
         private TextBox textBoxStrategy;
         private TextBox textBoxReasons;
         private TextBox textBoxRendite;
@@ -291,5 +312,9 @@
         private TextBox textBoxIndicator;
         private TextBox textBoxId;
         private Label label9;
+        private Label label10;
+        private TextBox textBoxExitDate;
+        private Label label11;
+        private TextBox textBoxEntryDate;
     }
 }

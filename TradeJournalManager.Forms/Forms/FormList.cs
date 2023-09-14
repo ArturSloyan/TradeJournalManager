@@ -14,46 +14,45 @@ namespace TradeJournalManager.Forms
             InitializeComponent();
 
             _dataService = new TradeSqLiteDataService("TradeJournalDB.db");
-            Load_DataGrid();
         }
 
-        private void Load_DataGrid()
+        private async void FormList_Load(object sender, EventArgs e)
         {
             dataGridViewTrades.DataSource = null;
-            var list = _dataService.GetAll();
+            var list = await _dataService.GetAll();
             dataGridViewTrades.DataSource = list;
 
-            dataGridViewTrades.Columns[nameof(Trade.Strategy)].Visible = false;
-            dataGridViewTrades.Columns[nameof(Trade.EntryDate)].Visible = false;
-            dataGridViewTrades.Columns[nameof(Trade.ExitDate)].Visible = false;
-            dataGridViewTrades.Columns[nameof(Trade.RenditeDouble)].Visible = false;
-
-            dataGridViewTrades.Columns[nameof(Trade.Id)].DisplayIndex = 0;
-            dataGridViewTrades.Columns[nameof(Trade.StrategyName)].DisplayIndex = 1;
-            dataGridViewTrades.Columns[nameof(Trade.NameOfIndicator)].DisplayIndex = 2;
-            dataGridViewTrades.Columns[nameof(Trade.NameOfCertificate)].DisplayIndex = 3;
-            dataGridViewTrades.Columns[nameof(Trade.Buy)].DisplayIndex = 4;
-            dataGridViewTrades.Columns[nameof(Trade.Sell)].DisplayIndex = 5;
-            dataGridViewTrades.Columns[nameof(Trade.Rendite)].DisplayIndex = 6;
-            dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].DisplayIndex = 7;
-            dataGridViewTrades.Columns[nameof(Trade.EntryDatetime)].DisplayIndex = 8;
-            dataGridViewTrades.Columns[nameof(Trade.ExitDatetime)].DisplayIndex = 9;
-
-            dataGridViewTrades.Columns[nameof(Trade.RenditeDouble)].DisplayIndex = 10;
-            dataGridViewTrades.Columns[nameof(Trade.Strategy)].DisplayIndex = 10;
-            dataGridViewTrades.Columns[nameof(Trade.EntryDate)].DisplayIndex = 10;
-
-            dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].Width = 240;
-
-            dataGridViewTrades.Columns[nameof(Trade.EntryDatetime)].HeaderText = "Entry";
-            dataGridViewTrades.Columns[nameof(Trade.ExitDatetime)].HeaderText = "Exit";
             dataGridViewTrades.Columns[nameof(Trade.StrategyName)].HeaderText = "Strategy";
             dataGridViewTrades.Columns[nameof(Trade.NameOfIndicator)].HeaderText = "Indicator";
             dataGridViewTrades.Columns[nameof(Trade.NameOfCertificate)].HeaderText = "Certificate";
-            dataGridViewTrades.Columns[nameof(Trade.StrategyName)].HeaderText = "Strategy";
-            dataGridViewTrades.Columns[nameof(Trade.EntryDate)].HeaderText = "Entry";
-            dataGridViewTrades.Columns[nameof(Trade.ExitDate)].HeaderText = "Exit";
             dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].HeaderText = "Reason";
+            dataGridViewTrades.Columns[nameof(Trade.EntryDatetime)].HeaderText = "Entry";
+            dataGridViewTrades.Columns[nameof(Trade.ExitDatetime)].HeaderText = "Exit";
+
+            dataGridViewTrades.Columns[nameof(Trade.StrategyName)].DisplayIndex = 0;
+            dataGridViewTrades.Columns[nameof(Trade.NameOfIndicator)].DisplayIndex = 1;
+            dataGridViewTrades.Columns[nameof(Trade.NameOfCertificate)].DisplayIndex = 2;
+            dataGridViewTrades.Columns[nameof(Trade.Buy)].DisplayIndex = 3;
+            dataGridViewTrades.Columns[nameof(Trade.Sell)].DisplayIndex = 4;
+            dataGridViewTrades.Columns[nameof(Trade.Rendite)].DisplayIndex = 5;
+            dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].DisplayIndex = 6;
+            dataGridViewTrades.Columns[nameof(Trade.EntryDatetime)].DisplayIndex = 7;
+            dataGridViewTrades.Columns[nameof(Trade.ExitDatetime)].DisplayIndex = 8;
+
+            dataGridViewTrades.Columns[nameof(Trade.Id)].DisplayIndex = 9;
+            dataGridViewTrades.Columns[nameof(Trade.Strategy)].DisplayIndex = 11;
+            dataGridViewTrades.Columns[nameof(Trade.RenditeDouble)].DisplayIndex = 10;
+            dataGridViewTrades.Columns[nameof(Trade.EntryDate)].DisplayIndex = 12;
+            dataGridViewTrades.Columns[nameof(Trade.ExitDate)].DisplayIndex = 13;
+
+            dataGridViewTrades.Columns[nameof(Trade.Id)].Visible = false;
+            dataGridViewTrades.Columns[nameof(Trade.Strategy)].Visible = false;
+            dataGridViewTrades.Columns[nameof(Trade.RenditeDouble)].Visible = false;
+            dataGridViewTrades.Columns[nameof(Trade.EntryDate)].Visible = false;
+            dataGridViewTrades.Columns[nameof(Trade.ExitDate)].Visible = false;
+
+
+            dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].Width = 370;
 
             buttonEdit.Enabled = dataGridViewTrades.RowCount > 0;
             buttonDelete.Enabled = dataGridViewTrades.RowCount > 0;
@@ -100,7 +99,7 @@ namespace TradeJournalManager.Forms
                 }
             }
 
-            Load_DataGrid();
+            FormList_Load(sender, e);
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e)
@@ -111,7 +110,8 @@ namespace TradeJournalManager.Forms
             }
             catch { throw new Exception("Deleteing trade doesnt work. Contact artur."); }
 
-            Load_DataGrid();
+            FormList_Load(sender, e);
         }
+
     }
 }

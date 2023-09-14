@@ -26,6 +26,6 @@ namespace TradeJournalManager.Core.AbstractServices
             id.IsNotNull();
         }
 
-        public abstract List<Trade> GetAll();
+        public abstract Task<List<Trade>> GetAll();
     }
 }

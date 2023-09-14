@@ -102,6 +102,7 @@
             Name = "FormList";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "List";
+            Load += FormList_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewTrades).EndInit();
             ResumeLayout(false);
         }

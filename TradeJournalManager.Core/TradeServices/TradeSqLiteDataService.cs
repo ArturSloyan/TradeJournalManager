@@ -13,12 +13,12 @@ namespace TradeJournalManager.Core.TradeServices
             _connection = new SqliteConnection($"Data Source = {dbPath}");
         }
 
-        public override void Add(Trade item)
+        public override async void Add(Trade item)
         {
             base.Add(item);
 
             _connection.Open();
-            _connection.Execute($"""
+            await _connection.ExecuteAsync($"""
                 INSERT INTO {nameof(Trade)}(
                 {nameof(Trade.Strategy)},
                 {nameof(Trade.NameOfIndicator)},
@@ -40,12 +40,12 @@ namespace TradeJournalManager.Core.TradeServices
             _connection.Close();
         }
 
-        public override void Edit(Trade item, int id)
+        public override async void Edit(Trade item, int id)
         {
             base.Edit(item, id);
 
             _connection.Open();
-            _connection.Execute($"""
+            await _connection.ExecuteAsync($"""
                 UPDATE {nameof(Trade)} SET
                 {nameof(Trade.Strategy)} = @{nameof(Trade.Strategy)},
                 {nameof(Trade.NameOfIndicator)} = @{nameof(Trade.NameOfIndicator)},
@@ -60,27 +60,27 @@ namespace TradeJournalManager.Core.TradeServices
             _connection.Close();
         }
 
-        public override void Delete(int id)
+        public override async void Delete(int id)
         {
             base.Delete(id);
 
             _connection.Open();
-            _connection.Execute($"""
+            await _connection.ExecuteAsync($"""
                 DELETE FROM {nameof(Trade)}
                 WHERE {nameof(Trade.Id)} = @{nameof(Trade.Id)}
                 """, new { Id = id });
             _connection.Close();
         }
 
-        public override List<Trade> GetAll()
+        public override async Task<List<Trade>> GetAll()
         {
             _connection.Open();
-            var trades = _connection.Query<Trade>($"""
+            var trades = await _connection.QueryAsync<Trade>($"""
                 SELECT * FROM {nameof(Trade)}
-                """).ToList();
+                """);
             _connection.Close();
-            
-            return trades;
+
+            return trades.ToList();
         }
     }
 }
