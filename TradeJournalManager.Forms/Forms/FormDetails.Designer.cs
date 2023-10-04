@@ -50,6 +50,8 @@
             textBoxExitDate = new TextBox();
             label11 = new Label();
             textBoxEntryDate = new TextBox();
+            checkBoxIsClosed = new CheckBox();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -254,11 +256,32 @@
             textBoxEntryDate.Size = new Size(365, 27);
             textBoxEntryDate.TabIndex = 16;
             // 
+            // checkBoxIsClosed
+            // 
+            checkBoxIsClosed.Enabled = false;
+            checkBoxIsClosed.AutoSize = true;
+            checkBoxIsClosed.Location = new Point(132, 741);
+            checkBoxIsClosed.Name = "checkBoxIsClosed";
+            checkBoxIsClosed.Size = new Size(18, 17);
+            checkBoxIsClosed.TabIndex = 28;
+            checkBoxIsClosed.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(58, 738);
+            label8.Name = "label8";
+            label8.Size = new Size(57, 20);
+            label8.TabIndex = 27;
+            label8.Text = "Closed:";
+            // 
             // FormDetails
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(551, 737);
+            ClientSize = new Size(551, 803);
+            Controls.Add(checkBoxIsClosed);
+            Controls.Add(label8);
             Controls.Add(textBoxId);
             Controls.Add(label9);
             Controls.Add(textBoxIndicator);
@@ -283,8 +306,8 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
-            MaximumSize = new Size(569, 784);
-            MinimumSize = new Size(569, 784);
+            MaximumSize = new Size(569, 850);
+            MinimumSize = new Size(569, 850);
             Name = "FormDetails";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Details";
@@ -316,5 +339,7 @@
         private TextBox textBoxExitDate;
         private Label label11;
         private TextBox textBoxEntryDate;
+        private CheckBox checkBoxIsClosed;
+        private Label label8;
     }
 }

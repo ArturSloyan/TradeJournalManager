@@ -40,5 +40,8 @@ namespace TradeJournalManager.Domain.Models
         public long ExitDate { get; set; }
         [NotMapped]
         public DateTime ExitDatetime { get { return DateTimeOffset.FromUnixTimeSeconds(ExitDate).DateTime; } }
+
+        [Required]
+        public bool IsClosed { get; set; }
     }
 }

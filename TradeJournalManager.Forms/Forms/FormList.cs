@@ -28,6 +28,7 @@ namespace TradeJournalManager.Forms
             dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].HeaderText = "Reason";
             dataGridViewTrades.Columns[nameof(Trade.EntryDatetime)].HeaderText = "Entry";
             dataGridViewTrades.Columns[nameof(Trade.ExitDatetime)].HeaderText = "Exit";
+            dataGridViewTrades.Columns[nameof(Trade.IsClosed)].HeaderText = "Closed";
 
             dataGridViewTrades.Columns[nameof(Trade.StrategyName)].DisplayIndex = 0;
             dataGridViewTrades.Columns[nameof(Trade.NameOfIndicator)].DisplayIndex = 1;
@@ -52,7 +53,7 @@ namespace TradeJournalManager.Forms
             dataGridViewTrades.Columns[nameof(Trade.ExitDate)].Visible = false;
 
 
-            dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].Width = 370;
+            dataGridViewTrades.Columns[nameof(Trade.ThinkProcess)].Width = 250;
 
             buttonEdit.Enabled = dataGridViewTrades.RowCount > 0;
             buttonDelete.Enabled = dataGridViewTrades.RowCount > 0;

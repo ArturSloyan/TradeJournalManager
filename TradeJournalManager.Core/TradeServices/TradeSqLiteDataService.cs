@@ -27,7 +27,8 @@ namespace TradeJournalManager.Core.TradeServices
                 {nameof(Trade.Sell)},
                 {nameof(Trade.ThinkProcess)},
                 {nameof(Trade.EntryDate)},
-                {nameof(Trade.ExitDate)}) VALUES(
+                {nameof(Trade.ExitDate)},
+                {nameof(Trade.IsClosed)}) VALUES(
                 @{nameof(Trade.Strategy)},
                 @{nameof(Trade.NameOfIndicator)},
                 @{nameof(Trade.NameOfCertificate)},
@@ -35,8 +36,9 @@ namespace TradeJournalManager.Core.TradeServices
                 @{nameof(Trade.Sell)},
                 @{nameof(Trade.ThinkProcess)},
                 @{nameof(Trade.EntryDate)}, 
-                @{nameof(Trade.ExitDate)})
-                """, new { item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProcess, item.EntryDate, item.ExitDate });
+                @{nameof(Trade.ExitDate)},
+                @{nameof(Trade.IsClosed)})
+                """, new { item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProcess, item.EntryDate, item.ExitDate, item.IsClosed });
             _connection.Close();
         }
 
@@ -54,9 +56,10 @@ namespace TradeJournalManager.Core.TradeServices
                 {nameof(Trade.Sell)} = @{nameof(Trade.Sell)},
                 {nameof(Trade.ThinkProcess)} = @{nameof(Trade.ThinkProcess)},
                 {nameof(Trade.EntryDate)} = @{nameof(Trade.EntryDate)},
-                {nameof(Trade.ExitDate)} = @{nameof(Trade.ExitDate)} 
+                {nameof(Trade.ExitDate)} = @{nameof(Trade.ExitDate)},
+                {nameof(Trade.IsClosed)} = @{nameof(Trade.IsClosed)} 
                 WHERE {nameof(Trade.Id)} = @{nameof(Trade.Id)}
-                """, new { item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProcess, item.EntryDate, item.ExitDate, item.Id });
+                """, new { item.Strategy, item.NameOfIndicator, item.NameOfCertificate, item.Buy, item.Sell, item.ThinkProcess, item.EntryDate, item.ExitDate, item.IsClosed, item.Id });
             _connection.Close();
         }
 

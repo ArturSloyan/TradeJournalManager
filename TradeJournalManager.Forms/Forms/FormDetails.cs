@@ -24,6 +24,7 @@ namespace TradeJournalManager.Forms.Forms
             textBoxReasons.Text = _trade.ThinkProcess;
             textBoxEntryDate.Text = DateTimeOffset.FromUnixTimeSeconds(_trade.EntryDate).DateTime.ToString();
             textBoxExitDate.Text = DateTimeOffset.FromUnixTimeSeconds(_trade.ExitDate).DateTime.ToString();
+            checkBoxIsClosed.Checked = _trade.IsClosed;
             label1.Select();
         }
     }

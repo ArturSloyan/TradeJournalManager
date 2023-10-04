@@ -49,6 +49,8 @@
             errorProvider = new ErrorProvider(components);
             label6 = new Label();
             dateTimePickerExitDate = new DateTimePicker();
+            label9 = new Label();
+            checkBoxIsClosed = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
@@ -126,7 +128,7 @@
             // 
             // buttonDo
             // 
-            buttonDo.Location = new Point(434, 696);
+            buttonDo.Location = new Point(433, 762);
             buttonDo.Name = "buttonDo";
             buttonDo.Size = new Size(94, 29);
             buttonDo.TabIndex = 9;
@@ -205,11 +207,31 @@
             dateTimePickerExitDate.Size = new Size(397, 27);
             dateTimePickerExitDate.TabIndex = 16;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(57, 710);
+            label9.Name = "label9";
+            label9.Size = new Size(57, 20);
+            label9.TabIndex = 17;
+            label9.Text = "Closed:";
+            // 
+            // checkBoxIsClosed
+            // 
+            checkBoxIsClosed.AutoSize = true;
+            checkBoxIsClosed.Location = new Point(131, 713);
+            checkBoxIsClosed.Name = "checkBoxIsClosed";
+            checkBoxIsClosed.Size = new Size(18, 17);
+            checkBoxIsClosed.TabIndex = 18;
+            checkBoxIsClosed.UseVisualStyleBackColor = true;
+            // 
             // FormData
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(551, 735);
+            ClientSize = new Size(551, 803);
+            Controls.Add(checkBoxIsClosed);
+            Controls.Add(label9);
             Controls.Add(dateTimePickerExitDate);
             Controls.Add(dateTimePickerEntryDate);
             Controls.Add(textBoxReasons);
@@ -231,8 +253,8 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
-            MaximumSize = new Size(569, 782);
-            MinimumSize = new Size(569, 782);
+            MaximumSize = new Size(569, 850);
+            MinimumSize = new Size(569, 850);
             Name = "FormData";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Data";
@@ -263,5 +285,7 @@
         private ErrorProvider errorProvider;
         private DateTimePicker dateTimePickerExitDate;
         private Label label6;
+        private CheckBox checkBoxIsClosed;
+        private Label label9;
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Humanizer;
-using System.Diagnostics;
 using TradeJournalManager.Core;
 using TradeJournalManager.Core.QuoteServices;
 using TradeJournalManager.Core.TradeServices;
@@ -41,6 +40,7 @@ namespace TradeJournalManager.Forms
                 progressBarWinLoss.Value = (int)Math.Round((float)tradeList.Where((trade => trade.IsWinningTrade())).Count() / (tradeList.Count() - tradeList.Where(trade => trade.IsSellTextboxEmpty()).Count()) * 100);
             }
 
+            // make anothe property if closed or not
             if (tradeList.Any(trade => !trade.IsSellTextboxEmpty()))
             {
                 textBoxAverageRendite.Text = $"{Math.Round(tradeList.Where(trade => !trade.IsSellTextboxEmpty()).Average(trade => trade.RenditeDouble), 2)} %";
@@ -49,9 +49,9 @@ namespace TradeJournalManager.Forms
                 textBoxAverageHolding.Text = $"{TimeSpan.FromSeconds(tradeList.Where(trade => !trade.IsSellTextboxEmpty()).Average(trade => trade.ExitDate - trade.EntryDate)).Humanize(4)}";
             }
 
-            if (tradeList.Any(trade => trade.IsSellTextboxEmpty()))
+            if (tradeList.Any(trade => trade.IsClosed))
             {
-                textBoxInvestedCapital.Text = tradeList.Where(trade => trade.IsSellTextboxEmpty()).Sum(trade => Convert.ToDouble(trade.Buy)).ToString("C");
+                textBoxInvestedCapital.Text = tradeList.Where(trade => !trade.IsClosed).Sum(trade => Convert.ToDouble(trade.Buy)).ToString("C");
             }
             else
             {

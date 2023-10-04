@@ -33,6 +33,7 @@ namespace TradeJournalManager.Forms.Forms
                 textBoxBuy.Text = _trade.Buy.ToString();
                 textBoxSell.Text = _trade.Sell.ToString();
                 textBoxReasons.Text = _trade.ThinkProcess;
+                checkBoxIsClosed.Checked = _trade.IsClosed;
 
                 dateTimePickerEntryDate.Value = DateTimeOffset.FromUnixTimeSeconds(_trade.EntryDate).DateTime;
             }
@@ -65,6 +66,7 @@ namespace TradeJournalManager.Forms.Forms
                 _trade.ThinkProcess = textBoxReasons.Text;
                 entryDate = new DateTimeOffset(dateTimePickerEntryDate.Value).ToUnixTimeSeconds();
                 exitDate = new DateTimeOffset(dateTimePickerExitDate.Value).ToUnixTimeSeconds();
+                _trade.IsClosed = checkBoxIsClosed.Checked;
 
                 if (entryDate > exitDate)
                 {
