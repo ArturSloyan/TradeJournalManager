@@ -5,7 +5,7 @@
 		<TargetFramework>net7.0-windows</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<ApplicationIcon>Microsoft-Fluentui-Emoji-Mono-Money-With-Wings.ico</ApplicationIcon>
+		<ApplicationIcon>TradeJournalLogo.ico</ApplicationIcon>
 
 		<DebugType>None</DebugType>
 		<DebugSymbols>false</DebugSymbols>
@@ -23,13 +23,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Microsoft-Fluentui-Emoji-Mono-Money-With-Wings.ico">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
 		<Content Include="TradeJournalDB.db">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 		</Content>
+		<Content Include="TradeJournalLogo.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
