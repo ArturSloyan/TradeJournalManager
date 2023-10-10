@@ -18,6 +18,10 @@
 		<StartupObject>TradeJournalManager.Forms.Program</StartupObject>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <Optimize>False</Optimize>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<None Remove="TradeJournalDB.db" />
 	</ItemGroup>

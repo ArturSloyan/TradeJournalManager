@@ -36,6 +36,7 @@ namespace TradeJournalManager.Forms.Forms
                 checkBoxIsClosed.Checked = _trade.IsClosed;
 
                 dateTimePickerEntryDate.Value = DateTimeOffset.FromUnixTimeSeconds(_trade.EntryDate).DateTime;
+                dateTimePickerExitDate.Value = DateTimeOffset.FromUnixTimeSeconds(_trade.ExitDate).DateTime;
             }
         }
 
